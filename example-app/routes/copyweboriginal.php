@@ -3,8 +3,6 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
-use App\Http\Controllers\MahasiswaController;
-
 
 
 /*
@@ -21,7 +19,6 @@ use App\Http\Controllers\MahasiswaController;
 
 Route::get('/', [PagesController::class, 'home']);
 Route::get('/about', [PagesController::class, 'about']);
-Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
 
 //Route::get('/', 'App\Http\Controllers\Controller\PagesController@home');
 
