@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 // untuk buat pengguna databasenya
 use Illuminate\Support\Facades\DB;
+// untuk memanggil model studentnya
 use App\Models\Student;
 
 class MahasiswaController extends Controller
