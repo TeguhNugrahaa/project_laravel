@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\App;
 // untuk buat pengguna databasenya
 use Illuminate\Support\Facades\DB;
 // untuk memanggil model studentnya
-use App\Models\Student;
+use App\Models\Mahasiswa;
 
 class MahasiswaController extends Controller
 {
@@ -21,8 +21,8 @@ class MahasiswaController extends Controller
 
         // buat manggil database mahasiswa lalu kirimkan ke view dump
 
-
-        $mahasiswa = student::all();
+        //menggunakan kelas model default student
+        $mahasiswa = Mahasiswa::all();
 
 
         // buat manggil database mahasiswa pake query builder
