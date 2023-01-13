@@ -7,4 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Students extends Model
 {
+    //mess assignment dengan protected dengan nama, nim, email,jurusan
+    protected $fillable = ['nama', 'nim', 'email', 'jurusan'];
 }
+
