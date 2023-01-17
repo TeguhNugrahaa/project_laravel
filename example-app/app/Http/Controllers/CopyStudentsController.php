@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\App;
 // untuk buat pengguna databasenya
 use Illuminate\Support\Facades\DB;
 // untuk memanggil model studentnya
-use App\Models\Mahasiswa;
+use App\Models\Students;
 
-class MahasiswaController extends Controller
+class StudentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,18 +18,10 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-
-        // buat manggil database mahasiswa lalu kirimkan ke view dump
-
-        //menggunakan kelas model default student
-        $mahasiswa = Mahasiswa::all();
-
-
-        // buat manggil database mahasiswa pake query builder
-        //$mahasiswa = DB::table('mahasiswa')->get();
-        //dump($mahasiswa);
-        // return untuk memanggil tabel mahasiswanya
-        return view('mahasiswa.index', ['mahasiswa' => $mahasiswa]);
+        // buat variabel studentsnya di controllernya
+        $students = Students::all();
+        // ini untuk return view file students (index.blade.php)
+        return view('students.index', compact('students'));
     }
 
     /**
@@ -37,7 +29,7 @@ class MahasiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Students $students)
     {
         //
     }
@@ -48,7 +40,7 @@ class MahasiswaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Students $students)
     {
         //
     }
@@ -61,16 +53,23 @@ class MahasiswaController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = array(
+
+            // ini untuk menangkap studentsnya
+            'students' => Students::find($id)
+        );
+
+        // ini untuk menamngkap data models studentsnya
+        return view('students.show')->with($data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param \App\Models\Students;
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Students $students)
     {
         //
     }

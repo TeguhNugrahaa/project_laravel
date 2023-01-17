@@ -2,7 +2,7 @@
 <!-- ngambilnya dari folder views/layout/main -->
 @extends('layout/main')
 
-@section('title', 'web development nugraha')
+@section('title', 'Web development nugraha')
 
 
 
