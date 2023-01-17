@@ -119,21 +119,23 @@ class StudentsController extends Controller
     {
         //
 
-        $students = Students::where('id', $id)->first();
-        $students->update([
+        //$students = Students::where('id', $id)->first();
+        //$students->update([
 
-            'nama' => 'request',
-            'nim' => 'request',
-            'email' => 'request',
-            'jurusan' => 'request'
+        //'nama' => 'request',
+        //'nim' => 'request',
+        //'email' => 'request',
+        //jurusan' => 'request'
 
+        //]);
 
-            // ini untuk var dump
-            //$students = $request->getVar();
-            //dd($students);
-        ]);
         return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Diubah');
     }
+
+    // ini untuk var dump
+    //$students = $request->getVar();
+    //dd($students);
+    //]);
 
     /**
      * Remove the specified resource from storage.
