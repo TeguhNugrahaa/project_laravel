@@ -29,15 +29,9 @@ class StudentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function create()
-    {
-        return view('students.create');
-
     public function create(Students $students)
     {
-        //
-
+        return view('students.create');
     }
 
     /**
@@ -46,32 +40,32 @@ class StudentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
     public function store(Request $request)
     {
-        //Versi 1
-        //membuat databasenya
+        // Versi 1
         //$students = new Students;
         //$students->nama = $request->nama;
         //$students->nim = $request->nim;
         //$students->email = $request->email;
         //$students->jurusan = $request->jurusan;
-        //menyimpan databasenya
+
+
+        // Versi 2
         //$students->save();
 
-        //Versi 2
         //Students::create([
+
         //'nama' => $request->nama,
         //'nim' => $request->nim,
         //'email' => $request->email,
         //'jurusan' => $request->jurusan
-        //]);
 
 
+        //])
+
+        // Versi 3
 
 
-
-        //request validasinya
         $request->validate([
 
             'nama' => 'required',
@@ -81,15 +75,8 @@ class StudentsController extends Controller
 
         ]);
 
-        //Versi 3
         Students::create($request->all());
-        //mengembalikan ke link studentsnya direct flash data
-        return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Ditambahkan!');
-
-    public function store(Students $students)
-    {
-        //
-
+        return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Ditambahkan');
     }
 
     /**
@@ -119,9 +106,6 @@ class StudentsController extends Controller
     public function edit(Students $students)
     {
         return view('students.edit', compact('students'));
-
-        //
-
     }
 
     /**
@@ -133,18 +117,7 @@ class StudentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-
-        $request->validate([
-
-            'nama' => 'required',
-            'nim' => 'required|size:10',
-            'email' => 'required',
-            'jurusan' => 'required'
-
-        ]);
-
-        //buat update studentsnya namun harus diperbaiki
+        //
 
         $students = Students::where('id', $id)->first();
         $students->update([
@@ -154,12 +127,12 @@ class StudentsController extends Controller
             'email' => 'request',
             'jurusan' => 'request'
 
+
+            // ini untuk var dump
+            //$students = $request->getVar();
+            //dd($students);
         ]);
-
-        return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Diubah!');
-
-        //
-
+        return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Diubah');
     }
 
     /**
@@ -170,14 +143,8 @@ class StudentsController extends Controller
      */
     public function destroy($id)
     {
-
-
-        //$Students::destroy($id->id);
         $students = Students::findOrFail($id);
         $students->destroy();
-        return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Dihapus!');
-
-        //
-
+        return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Dihapus');
     }
 }
