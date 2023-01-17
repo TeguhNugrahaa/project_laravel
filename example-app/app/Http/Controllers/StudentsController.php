@@ -139,7 +139,7 @@ class StudentsController extends Controller
     public function destroy($id)
     {
         $students = Students::findOrFail($id);
-        $students->destroy();
+        $students->destroy($id);
         return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Dihapus');
     }
 }
