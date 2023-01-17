@@ -35,6 +35,7 @@ Route::get('/students/create', [StudentsController::class, 'create']);
 // Route get untuk students 1
 Route::get('/students/{student}', [StudentsController::class, 'show']);
 
+
 // Route post untuk students controller yang methodnya store
 Route::post('/students', [StudentsController::class, 'store']);
 
@@ -46,3 +47,7 @@ Route::get('/students/{student}/edit', [StudentsController::class, 'edit']);
 
 // Route menerima method post dengan menggunakan edit
 Route::post('/students/{student}', [StudentsController::class, 'update']);
+=======
+
+// Route post untuk students controller yang methodnya store
+Route::post('/students', [StudentsController::class, 'store']);

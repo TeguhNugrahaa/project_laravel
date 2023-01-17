@@ -29,9 +29,15 @@ class StudentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         return view('students.create');
+
+    public function create(Students $students)
+    {
+        //
+
     }
 
     /**
@@ -40,6 +46,7 @@ class StudentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         //Versi 1
@@ -78,6 +85,11 @@ class StudentsController extends Controller
         Students::create($request->all());
         //mengembalikan ke link studentsnya direct flash data
         return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Ditambahkan!');
+
+    public function store(Students $students)
+    {
+        //
+
     }
 
     /**
@@ -107,6 +119,9 @@ class StudentsController extends Controller
     public function edit(Students $students)
     {
         return view('students.edit', compact('students'));
+
+        //
+
     }
 
     /**
@@ -118,6 +133,7 @@ class StudentsController extends Controller
      */
     public function update(Request $request, $id)
     {
+
 
         $request->validate([
 
@@ -141,6 +157,9 @@ class StudentsController extends Controller
         ]);
 
         return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Diubah!');
+
+        //
+
     }
 
     /**
@@ -152,9 +171,13 @@ class StudentsController extends Controller
     public function destroy($id)
     {
 
+
         //$Students::destroy($id->id);
         $students = Students::findOrFail($id);
         $students->destroy();
         return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Dihapus!');
+
+        //
+
     }
 }
