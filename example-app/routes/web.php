@@ -43,7 +43,7 @@ Route::post('/students', [StudentsController::class, 'store']);
 Route::delete('/students/{student}', [StudentsController::class, 'destroy']);
 
 // Route menerima method get dengan menggunakan edit
-Route::get('/students/{student}/edit', [StudentsController::class, 'edit']);
+Route::get('/students/edit/{id}', [StudentsController::class, 'edit']);
 
 // Route menerima method post dengan menggunakan edit
-Route::post('/students/{student}', [StudentsController::class, 'update']);
+Route::post('/students/update/{id}', [StudentsController::class, 'update']);
