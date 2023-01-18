@@ -17,9 +17,10 @@
             <h1 class="mt-3">Form Ubah Data Mahasiswa</h1>
 
             <!-- form method post dengan aksi melemparkan link studentsnya dan perlu token untuk masuk database (csrf) -->
-            <form method="post" action="/students/{{ $students->id }}">
-                @method('post')
-                @csrf
+            <form method="post" action="{{ url('/students/update/'.$students->id) }}">
+                {{-- tidak perlu menggunakan directive method karena telah dihandle oleh csrf_field --}}
+                {{@csrf_field()}}
+
                 <div class="form-group">
                     <label for="nama">Nama</label>
                     <!-- menampilkan tanda eror -->
