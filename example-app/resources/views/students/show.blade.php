@@ -25,7 +25,9 @@
                     <p class="card-text">{{ $students->jurusan }}</p>
 
 
-                    <a href="{{ $students->id }}/edit" class="btn btn-primary">Edit</a>
+
+                    <!-- Pemanggilan link yang benar pake url lihat contoh yang saya bikin -->
+                    <a href="{{ url('/students/edit/'.$students->id) }}" class="btn btn-primary">Edit</a>
 
                     <form action="/students/{{ $students->id }}" method="post" class="d-inline">
                         @method('delete')
