@@ -103,8 +103,9 @@ class StudentsController extends Controller
      * @param \App\Models\Students;
      * @return \Illuminate\Http\Response
      */
-    public function edit(Students $students)
+    public function edit($id)
     {
+        $students = Students::find($id); //menemukan id students
         return view('students.edit', compact('students'));
     }
 
@@ -115,19 +116,27 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
-        //
 
-        $students = Students::where('id', $id)->first();
+        $students = Students::where('id', $id)->first(); // get id, jika di temukan maka proses update akan berjalan
         $students->update([
 
-            'nama' => 'request',
-            'nim' => 'request',
-            'email' => 'request',
-            'jurusan' => 'request'
+            'nama' => $request->nama, //mengambil data isian form
+            'nim' => $request->nim,
+            'email' => $request->email,
+            'jurusan' => $request->jurusan
         ]);
-        return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Diubah');
+
+        // lakukan statement atau pengecekan
+        if ($students) {
+
+            return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Diubah');
+        } else {
+
+            return redirect('/students')->with('status', 'Opps terjadi kesalahan, silahkan diulangi');
+        }
     }
 
     /**
